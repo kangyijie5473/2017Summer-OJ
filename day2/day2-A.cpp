@@ -29,7 +29,8 @@ int main(void)
             continue;
         }
         if(mail.find('.',at_pos) == string::npos ||
-           mail.find('.',at_pos) == at_pos+1){
+           mail.find('.',at_pos) == at_pos+1 || 
+           mail.find('.')== at_pos - 1){
                cout << "NO" << endl;
                continue;
            }
