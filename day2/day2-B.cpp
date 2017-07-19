@@ -11,7 +11,7 @@ int main(void)
 {
     int max = 0, min = 100;
     int sum = 0, n, score,num;
-    float ave_score;
+    double ave_score;
     while(cin >> n){
         num = n;
         while(n--){
