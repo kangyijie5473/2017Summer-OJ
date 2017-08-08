@@ -6,11 +6,11 @@
  */
 
 #include <iostream>
-#include <map>
+#include <unordered_map>
 using namespace std;
 int main(void)
 {
-    map<string,int> ball;
+    unordered_map<string,int> ball;
     int n;
     while(1){
         cin >> n;
