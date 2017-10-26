@@ -90,9 +90,9 @@ void queryJson(char queryString[],char buffer[])
 int main(void)
 {
     int n,m,offset = 0;
-    //scanf("%d%d",&n,&m);
-    n = 10;
-    m = 5; 
+    scanf("%d%d",&n,&m);
+    //n = 10;
+    //m = 5; 
     char buffer[8000] ;
     char *head = &buffer[0];
     
