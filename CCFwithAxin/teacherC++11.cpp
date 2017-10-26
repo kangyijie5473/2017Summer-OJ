@@ -10,10 +10,8 @@
 #include <cstdio>
 #include <algorithm>
 using namespace std;
-const int MAXSIZE = 1000;
 const int GETKEY = 0;
 const int PUTKEY = 1;
-//char *eventType[2] = {"get","put"}; 忘记杂用了
 struct Event{
     Event(int eventFlag, int objTime, int objKeyId):flag(eventFlag),time(objTime), keyId(objKeyId){} 
     int flag;

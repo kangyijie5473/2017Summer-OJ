@@ -48,9 +48,6 @@ bool func2(const int key)
 int main(void)
 {
     //debug
-    vector<string> eventType;
-    eventType.push_back(string("get"));
-    eventType.push_back(string("put"));
     //todo: aync
     vector<Event> taskLine;
     vector<int> keys;
@@ -62,8 +59,8 @@ int main(void)
     int keyId,getTime,speedTime;
     while(n--){
         scanf("%d%d%d",&keyId, &getTime, &speedTime);
-        taskLine.push_back(std::move(Event(GETKEY, getTime, keyId)));
-        taskLine.push_back(std::move(Event(PUTKEY, getTime+speedTime, keyId)));
+        taskLine.push_back(Event(GETKEY, getTime, keyId));
+        taskLine.push_back(Event(PUTKEY, getTime+speedTime, keyId));
     }
     sort(taskLine.begin(), taskLine.end(), compareEvent);
     //debug
