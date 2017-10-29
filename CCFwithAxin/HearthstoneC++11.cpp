@@ -44,6 +44,7 @@ void judgeHero(Hero &first, Hero &second){
 }
 int main(void)
 {
+    ios::sync_with_stdio(false);
     Hero player_first;
     Hero player_second;
     int n,postion, attackNum, hp, attacker, defender;
