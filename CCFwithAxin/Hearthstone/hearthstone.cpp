@@ -7,85 +7,8 @@
 
 #include <iostream>
 #include <vector>
+#include "Hero.h"
 using namespace std;
-class Hero;
-class Minion{
-public:
-
-    Minion(int Id, int AttackNum, int Hp): id(Id), attackNum(AttackNum),hp(Hp){}
-    void attack(Hero & enemy, int id);
-    int id;
-    int hp;
-    int attackNum;
-
-};
-void Minion::attack(Hero &enemy, int id)
-{
-    if(!id){
-        enemy.hp--;
-        return
-    }
-    attack = enemy.underAttack(id, this->attackNum);
-    this->hp -= attack;
-}
-class Hero{
-public:
-    Hero() = default;
-    Hero(const Hero&) = delete;
-    Hero &operator=(Hero &) = delete;
-    ~Hero() = default;
-    int hp;
-    int attack(Hero &enemy, int minionNum, int enemyNum);
-    int underAttack(int minionNum, int attackNum);
-    void summon(int postion, int attackNum, int hp);
-    void printMinion();
-private:
-    void judgeMinion(Minion &);
-    vector<Minion> minionList;
-    Minion &getMinion(int minionNum);
-};
-int Hero::underAttack(int minionNum, int attackNum)
-{
-    getMinion(minionNum).hp -= attackNum;
-    return getMinion(minionNum).attackNum;
-}
-void Hero::judgeMinion(Minion &minion)
-{
-    for(auto i = minionList.begin(); i != minionList.end(); i++)
-        if(i->hp <= 0){
-            minionList.erase(i);
-            return;
-        }
-}
-
-void Hero::summon(int postion, int attackNum, int hp)
-{
-    for(auto i = minionList.begin(); i != minionList.end(); i++){
-        if(i->id >= postion)
-            i->id++;
-    }
-    minionList.push_back(Minion(postion, attackNum, hp));
-}
-Minion &Hero::getMinion(int minionNum)
-{
-    for(auto minion : minionList){
-        if(minion.id == minionNum) // to do : some error probably
-            return minion;
-    }
-}
-void Hero::printMinion()
-{
-    cout << minionList.size() << " ";
-    for(int i = 1; i <= minionList.size(); i++){
-        cout << getMinion(i).hp << " ";
-    }
-}
-int Hero::attack(Hero &enemy, int minionNum, int enemyNum)
-{
-    getMinion(minionNum).attack(enemy, enemyNum);
-    judgeMinion(getMinion(minionNum));
-    return 0;
-}
 void judgeHero(Hero &first, Hero &second){
     if(first.hp > 0 && second.hp > 0){
         cout << 0 << endl;
@@ -141,7 +64,7 @@ int main(void)
             }
             if(cmd == "attack"){
                 cin >> attacker >> defender;
-                player_second.attack(player_second, attacker, defender);
+                player_second.attack(player_first, attacker, defender);
                 n--;
                 continue;
             }
