@@ -4,8 +4,11 @@ typedef struct Node
 	struct Node *next;
 	int val;
 }node;
+// KangKang's plan
 node *reverse(node *head)
 {
+	if(!head)
+		return head;
 	node dummy;
 	dummy.next = NULL;
 	node *p = &dummy;
@@ -19,6 +22,21 @@ node *reverse(node *head)
 	head = p->next;
 	return head;
 }
+// Tanswer's plan
+node *reverse1(node *head)
+{
+	if(!head || head->next == NULL)
+		return head;
+	node *p = NULL;
+	node *pnext = head;
+	while(pnext){
+		pnext = pnext->next;
+		head->next = p;
+		p = head;
+		head = pnext;
+	}
+	return p;
+}
 node *func(node *head)
 {
 	node *slow,*fast;
@@ -30,7 +48,7 @@ node *func(node *head)
 	node *temp = fast->next;
 	fast = slow->next;
 	slow->next = NULL;
-	head = reverse(head);
+	head = reverse1(head);
 	node *p = head;
 	if(temp == NULL)
 		slow = head->next;
